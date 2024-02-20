@@ -9,7 +9,7 @@ import { Form, Formik } from 'formik';
 //   getCategories,
 //   getCountries,
 // } from '@/lib/api';
-import Button from './button ';
+import Button from './button';
 import InputField from './input-field';
 import LogoUploader from '@/app/components/logo-uploader';
 import StatusLabel from './ststus-label';

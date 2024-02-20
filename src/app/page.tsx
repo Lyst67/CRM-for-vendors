@@ -1,4 +1,4 @@
-import AddCompanyButton from './components/add-company-btn';
+import React from 'react';
 import ClientComponent from './components/client-component';
 import ServerComponent from './components/server-component';
 import ServerComponentCopy from './components/server-component-copy';
@@ -8,7 +8,6 @@ export default function Page() {
   return (
     <main>
       <h1 className="text-3xl font-bold underline">Hello, Next.js!</h1>
-      <AddCompanyButton />
       <ServerComponent />
       <ClientComponent>
         <ServerComponentCopy />

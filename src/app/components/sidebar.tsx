@@ -48,7 +48,7 @@ export default function Sidebar({}: SidebarProps) {
           onClick={handleExitClick}
         >
           <Image
-            src="images/arrow-left-on.svg"
+            src="/images/arrow-left-on.svg"
             width={18}
             height={18}
             alt="arrow left on rectangle"
