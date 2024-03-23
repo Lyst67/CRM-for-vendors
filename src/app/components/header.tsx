@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import profilePic from '../../../public/images/ellipse2860.svg';
+import profilePic from '../../../public/images/avatar.svg';
 
 // export interface HeaderProps {
 //   children: string;

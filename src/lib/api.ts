@@ -1,3 +1,5 @@
+import { env } from 'node:process';
+
 export interface SummaryStats {
   promotions: number;
   categories: number;
@@ -54,10 +56,8 @@ export interface Promotion {
   avatar?: string;
 }
 
-const PROJECT_TOKEN = process.env.NEXT_PUBLIC_PROJECT_TOKEN;
-
 const buildUrl = (...paths: string[]) =>
-  `https://${PROJECT_TOKEN}.mockapi.io/api/v1/${paths.join('/')}`;
+  `https://65c21c4ff7e6ea59682aa7e1.mockapi.io/api/v1/${paths.join('/')}`;
 
 const stringifyQueryParams = (params: Record<string, string>) =>
   new URLSearchParams(params).toString();
@@ -75,20 +75,20 @@ export const getSummaryStats = (init?: RequestInit) => {
   return sendRequest<SummaryStats>(buildUrl('summary-stats', '1'), init);
 };
 
-// export const getSummarySales = (init?: RequestInit) => {
-//   return sendRequest<SummarySales[]>(buildUrl('summary-sales'), init);
-// };
-export const getSummarySales = () => {
-  let items = []
-  for (let i = 0; i < 6; i++) {
-    items.push({
-      companyId: i + 1,
-      companyTitle: "Costco Wholesale",
-      sold: 459,
-    income: 600})
-  }
-  return Promise.resolve(items)
-}
+export const getSummarySales = (init?: RequestInit) => {
+  return sendRequest<SummarySales[]>(buildUrl('summary-sales'), init);
+};
+// export const getSummarySales = () => {
+//   let items = []
+//   for (let i = 0; i < 6; i++) {
+//     items.push({
+//       companyId: i + 1,
+//       companyTitle: "Costco Wholesale",
+//       sold: 459,
+//     income: 600})
+//   }
+//   return Promise.resolve(items)
+// }
 
 export const getCountries = (init?: RequestInit) => {
   return sendRequest<Country[]>(buildUrl('countries'), init);

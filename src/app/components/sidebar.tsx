@@ -18,9 +18,9 @@ export default function Sidebar({}: SidebarProps) {
         <div>
           <Image
             className="mx-auto mt-8 mb-[77px] "
-            src="/images/logo/logo.svg"
+            src="/logo/logo.svg"
             width={122}
-            height={24}
+            height={25}
             alt="logo"
           />
           <ul className="ml-6 mr-1">
