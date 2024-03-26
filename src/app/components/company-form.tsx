@@ -12,7 +12,7 @@ import { Form, Formik } from 'formik';
 import Button from './button';
 import InputField from './input-field';
 import LogoUploader from '@/app/components/logo-uploader';
-import StatusLabel from './ststus-label';
+import StatusLabel from './status-label';
 
 export type CompanyFieldValues = {
   title: string;

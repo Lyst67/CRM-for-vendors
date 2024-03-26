@@ -2,14 +2,14 @@ import React from 'react';
 import clsx from 'clsx';
 
 export enum Status {
-  Active = 'active',
-  NotActive = 'notActive',
-  Pending = 'pending',
-  Suspended = 'suspended',
+  Active = 'Active',
+  NotActive = 'Not Active',
+  Pending = 'Pending',
+  Suspended = 'Suspended',
 }
 export interface StatusLabelProps {
   children: React.ReactNode;
-  status: Status;
+  status?: Status;
   disabled?: boolean;
 }
 
@@ -17,7 +17,7 @@ export default function StatusLabel({
   children,
   status,
   disabled,
-}: StatusLabelProps) {
+}: StatusLabelProps): React.ReactNode {
   return (
     <div
       className={clsx(

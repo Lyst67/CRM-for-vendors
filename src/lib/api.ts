@@ -1,5 +1,3 @@
-import { env } from 'node:process';
-
 export interface SummaryStats {
   promotions: number;
   categories: number;

@@ -7,7 +7,7 @@ import Toolbar from '../../components/toolbar';
 export default function Page() {
   return (
     <>
-      <Header>Dashbord</Header>
+      <Header>Dashboard</Header>
       <Toolbar action={<AddCompanyButton />}>
         <SearchInput />
       </Toolbar>
