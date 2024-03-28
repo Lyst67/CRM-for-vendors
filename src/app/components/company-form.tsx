@@ -2,22 +2,22 @@
 
 import React from 'react';
 import { Form, Formik } from 'formik';
-// import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-// import {
-//   CompanyStatus,
-//   createCompany,
-//   getCategories,
-//   getCountries,
-// } from '@/lib/api';
-import Button from './button';
-import InputField from './input-field';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+  CompanyStatus,
+  createCompany,
+  getCategories,
+  getCountries,
+} from '@/lib/api';
+import Button from '@/app/components/button';
+import InputField from '@/app/components/input-field';
 import LogoUploader from '@/app/components/logo-uploader';
-import StatusLabel from './status-label';
+import StatusLabel from '@/app/components/status-label';
 
 export type CompanyFieldValues = {
   title: string;
   description: string;
-  // status: CompanyStatus;
+  status: CompanyStatus;
   joinedDate: string;
   categoryId: string;
   countryId: string;
@@ -26,7 +26,7 @@ export type CompanyFieldValues = {
 const initialValues: CompanyFieldValues = {
   title: '',
   description: '',
-  // status: CompanyStatus.Active,
+  status: CompanyStatus.Active,
   joinedDate: '',
   categoryId: '',
   countryId: '',
@@ -37,45 +37,45 @@ export interface CompanyFormProps {
 }
 
 export default function CompanyForm({ onSubmit }: CompanyFormProps) {
-  // const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
-  // const { data: categories } = useQuery({
-  //   queryKey: ['categories'],
-  //   // queryFn: getCategories,
-  //   staleTime: 10 * 1000,
-  // });
+  const { data: categories } = useQuery({
+    queryKey: ['categories'],
+    queryFn: getCategories,
+    staleTime: 10 * 1000,
+  });
 
-  // const { data: countries } = useQuery({
-  //   queryKey: ['countries'],
-  //   // queryFn: getCountries,
-  //   staleTime: 10 * 1000,
-  // });
+  const { data: countries } = useQuery({
+    queryKey: ['countries'],
+    queryFn: getCountries,
+    staleTime: 10 * 1000,
+  });
 
-  // const { mutateAsync, isPending } = useMutation({
-  //   mutationFn: createCompany,
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries({
-  //       queryKey: ['companies'],
-  //     });
-  //   },
-  // });
+  const { mutateAsync, isPending } = useMutation({
+    mutationFn: createCompany,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['companies'],
+      });
+    },
+  });
 
-  // const handleSubmit = async (values: CompanyFieldValues) => {
-  //   await mutateAsync({
-  //     ...values,
-  //     categoryTitle:
-  //       categories?.find(({ id }) => id === values.categoryId)?.title ?? '',
-  //     countryTitle:
-  //       countries?.find(({ id }) => id === values.countryId)?.title ?? '',
-  //   });
+  const handleSubmit = async (values: CompanyFieldValues) => {
+    await mutateAsync({
+      ...values,
+      categoryTitle:
+        categories?.find(({ id }) => id === values.categoryId)?.title ?? '',
+      countryTitle:
+        countries?.find(({ id }) => id === values.countryId)?.title ?? '',
+    });
 
-  //   if (onSubmit) {
-  //     onSubmit(values);
-  //   }
-  // };
+    if (onSubmit) {
+      onSubmit(values);
+    }
+  };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <Form className="flex flex-col gap-10">
         <p className="mb-0.5 text-xl">Add new company</p>
         <div className="flex gap-6">
@@ -88,13 +88,13 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
               name="status"
               as="select"
             >
-              {/* {(Object.values(CompanyStatus) as CompanyStatus[]).map(
+              {(Object.values(CompanyStatus) as CompanyStatus[]).map(
                 (status) => (
                   <option key={status} value={status}>
                     <StatusLabel status={status} styled={false} />
                   </option>
                 )
-              )} */}
+              )}
             </InputField>
             <InputField
               required
@@ -103,11 +103,11 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
               name="countryId"
               as="select"
             >
-              {/* {countries?.map((country) => (
+              {countries?.map((country) => (
                 <option key={country.id} value={country.id}>
                   {country.title}
                 </option>
-              ))} */}
+              ))}
             </InputField>
           </div>
           <div className="flex flex-col flex-1 gap-5">
@@ -119,11 +119,11 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
               name="categoryId"
               as="select"
             >
-              {/* {categories?.map((category) => (
+              {categories?.map((category) => (
                 <option key={category.id} value={category.id}>
                   {category.title}
                 </option>
-              ))} */}
+              ))}
             </InputField>
             <InputField
               required
@@ -139,7 +139,7 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
             />
           </div>
         </div>
-        <Button type="submit">Add company</Button>
+        <Button disabled={isPending}>Add company</Button>
       </Form>
     </Formik>
   );
