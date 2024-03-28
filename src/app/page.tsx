@@ -1,6 +1,5 @@
 import Button from '@/app/components/button';
 import Link from 'next/link';
-import Header from './components/header';
 import Image from 'next/image';
 export default function Page() {
   return (

@@ -1,6 +1,5 @@
 import React from 'react';
 import clsx from 'clsx';
-import styles from './styles.module.css';
 
 export enum StatCardType {
   Dark = 'dark',
@@ -18,12 +17,8 @@ export default function StatCard({ type, label, counter }: StatCardProps) {
     <div
       className={clsx(
         'rounded',
-        type === StatCardType.Dark &&
-          'pt-3 px-3 bg-gray-900 odd:text-purple-200 even:text-lime-200 text-right',
-        type === StatCardType.Gradient && [
-          styles.gradient,
-          'p-7 bg-purple-200 text-gray-900 text-left',
-        ]
+        type === StatCardType.Dark && 'pt-3 px-3 bg-gray-900 text-right',
+        type === StatCardType.Gradient && 'p-7 text-gray-900 text-left'
       )}
     >
       <p

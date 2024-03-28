@@ -21,7 +21,7 @@ export default async function Page({}: PageProps) {
           </>
         }
       >
-        {data.map(({ id, title, companyTitle, discount }) => (
+        {data.map(({ id, title, companyTitle, discount }, index) => (
           <tr key={id}>
             <SummaryTableCell>{companyTitle}</SummaryTableCell>
             <SummaryTableCell>{title}</SummaryTableCell>

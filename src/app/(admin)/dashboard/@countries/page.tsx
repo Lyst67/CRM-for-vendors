@@ -16,7 +16,7 @@ export default async function Page({}: PageProps) {
   return (
     <DashboardCard label="Countries of companies">
       <div className="flex items-end pb-5 px-5 gap-2">
-        <div>
+        <div className="max-w-28 whitespace-pre">
           {countries.map(({ id, title }) => (
             <p
               key={id}
@@ -27,7 +27,15 @@ export default async function Page({}: PageProps) {
             >{`${title} - ${counts[id] || 0}`}</p>
           ))}
         </div>
-        <Image width={395} height={260} src="/images/world.svg" alt="world" />
+        <div className="max-w-[395px]">
+          <Image
+            width={0}
+            height={0}
+            src="/images/world.svg"
+            alt="world"
+            style={{ width: '100%', height: 'auto' }}
+          />
+        </div>
       </div>
     </DashboardCard>
   );

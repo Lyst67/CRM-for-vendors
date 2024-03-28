@@ -1,31 +1,46 @@
+'use client';
+
 import React from 'react';
 import CompanyRow from './company-row';
-import { Status } from './status-label';
+import { useQuery } from '@tanstack/react-query';
+import { getCompanies } from '@/lib/api';
 
 export interface CompanyTableProps {}
 
+const headers = [
+  'Category',
+  'Company',
+  'Status',
+  'Promotion',
+  'Country',
+  'Joined date',
+];
+
 export default function CompanyTable({}: CompanyTableProps) {
+  const { data } = useQuery({
+    queryKey: ['companies'],
+    queryFn: () => getCompanies(),
+    staleTime: 10 * 1000,
+  });
+
   return (
-    <div className="h-full bg-[#F3F4F6]">
-      <div className="grid h-[72px] pt-8 pb-5 mx-10 grid-cols-[1fr_2fr_1fr_1fr_1fr_1fr] justify-items-center gy-[8px] ">
-        <div>Category</div>
-        <div>Company</div>
-        <div>Status</div>
-        <div>Promotion</div>
-        <div>Country</div>
-        <div>Joined data</div>
-      </div>
-      <div>
-        <CompanyRow
-          id={1}
-          category={'Product'}
-          company={'Costco Wholesale'}
-          status={Status.Pending}
-          promotion={true}
-          country={'USA'}
-          joinedData={'19.02.23'}
-        />
-      </div>
+    <div className="h-full py-8 px-10 bg-grey-100">
+      <table className="table-auto w-full border-separate border-spacing-y-2">
+        <thead>
+          <tr>
+            {headers.map((header, i) => (
+              <th key={i} className="pb-5 text-sm font-light text-gray-900">
+                {header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {data?.map((company) => (
+            <CompanyRow key={company.id} company={company} />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

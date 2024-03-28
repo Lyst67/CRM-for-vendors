@@ -9,7 +9,14 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'first-child': "url('/images/mesh-gradient-1.svg')",
+        'second-child': "url('/images/mesh-gradient-2.svg')",
+        'third-child': "url('/images/mesh-gradient-3.svg')",
+        'fourth-child': "url('/images/mesh-gradient-4.svg')",
+      },
+    },
   },
   plugins: [],
 };

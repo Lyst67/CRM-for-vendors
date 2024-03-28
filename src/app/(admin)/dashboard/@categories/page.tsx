@@ -14,17 +14,24 @@ export default async function Page({}: PageProps) {
 
   return (
     <DashboardCard label="Categories of companies">
-      <div className="grid grid-cols-12 gap-3 pb-5 px-5">
-        {categories.map(({ id, title }) => (
-          <div key={id} className="col-span-3">
+      <ul className="grid grid-cols-12 gap-3 pb-5 px-5">
+        {categories.map(({ id, title }, index) => (
+          <li
+            key={id}
+            className={`col-span-3 ${
+              index < 4
+                ? 'odd:text-purple-200 even:text-lime-200'
+                : 'odd:text-lime-200 even:text-purple-200'
+            }`}
+          >
             <StatCard
               type={StatCardType.Dark}
               label={title}
               counter={counts[id] || 0}
             />
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </DashboardCard>
   );
 }
