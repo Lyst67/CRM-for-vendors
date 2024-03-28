@@ -90,9 +90,7 @@ export default function PromotionForm({
           />
           <LogoUploader square label="Image" placeholder="Upload photo" />
         </div>
-        <Button type="submit" disabled={isPending}>
-          Add promotion
-        </Button>
+        <Button disabled={isPending}>Add promotion</Button>
       </Form>
     </Formik>
   );
