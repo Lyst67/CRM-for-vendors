@@ -21,6 +21,7 @@ export type CompanyFieldValues = {
   joinedDate: string;
   categoryId: string;
   countryId: string;
+  avatar: string;
 };
 
 const initialValues: CompanyFieldValues = {
@@ -30,6 +31,7 @@ const initialValues: CompanyFieldValues = {
   joinedDate: '',
   categoryId: '',
   countryId: '',
+  avatar: '',
 };
 
 export interface CompanyFormProps {
@@ -61,6 +63,7 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
   });
 
   const handleSubmit = async (values: CompanyFieldValues) => {
+    console.log(values);
     await mutateAsync({
       ...values,
       categoryTitle:
@@ -80,7 +83,12 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
         <p className="mb-0.5 text-xl">Add new company</p>
         <div className="flex gap-6">
           <div className="flex flex-col flex-1 gap-5">
-            <LogoUploader label="Logo" placeholder="Upload photo" />
+            <LogoUploader placeholder="Upload photo" />
+            <InputField
+              label="Brend logo"
+              placeholder="Logo URL"
+              name="avatar"
+            />
             <InputField
               required
               label="Status"

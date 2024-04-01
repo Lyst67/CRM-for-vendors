@@ -1,4 +1,4 @@
-// import StatusLabel, { Status } from './components/ststus-label';
+
 import AddCompanyButton from '../../components/add-company-btn';
 import Header from '../../components/header';
 import SearchInput from '../../components/search-input';
@@ -11,10 +11,6 @@ export default function Page() {
       <Toolbar action={<AddCompanyButton />}>
         <SearchInput />
       </Toolbar>
-      {/* <StatusLabel status={Status.Active}>Active</StatusLabel>
-      <StatusLabel status={Status.NotActive}>Not active</StatusLabel>
-      <StatusLabel status={Status.Pending}>Pending</StatusLabel>
-      <StatusLabel status={Status.Suspended}>Suspended</StatusLabel> */}
     </>
   );
 }

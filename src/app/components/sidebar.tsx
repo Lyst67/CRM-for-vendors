@@ -22,6 +22,7 @@ export default function Sidebar({}: SidebarProps) {
             width={122}
             height={25}
             alt="logo"
+            priority={true}
           />
           <ul className="ml-6 mr-1">
             <SidebarItem

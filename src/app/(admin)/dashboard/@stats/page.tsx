@@ -1,6 +1,6 @@
 import React from 'react';
 import { getSummaryStats, SummaryStats } from '@/lib/api';
-import StatCard, { StatCardType } from '@/app/components/stat-card.tsx';
+import StatCard, { StatCardType } from '@/app/components/stat-card';
 
 // function getBackgroundClass(index: number) {
 //   return index === 0

@@ -16,13 +16,17 @@ export default function CompanyRow({ company }: CompanyRowProps) {
         {company.categoryTitle}
       </td>
       <td>
-        <div className="flex gap-4 items-center">
-          <Image
-            width={32}
-            height={32}
-            src={'/images/costco.png'}
-            alt="company label"
-          />
+        <div className="flex gap-4 items-center ml-2">
+          <div className="flex justify-center items-center w-8 h-8 rounded-full bg-blue-500">
+            {company.avatar && (
+              <Image
+                width={24}
+                height={24}
+                src={company.avatar}
+                alt="company avatar"
+              />
+            )}
+          </div>
           <Link href={`/companies/${company.id}`}>{company.title}</Link>
         </div>
       </td>

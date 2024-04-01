@@ -65,7 +65,7 @@ const sendRequest = async <T>(url: string, init?: RequestInit) => {
   if (!res.ok) {
     throw new Error(await res.text());
   }
-
+  
   return (await res.json()) as T;
 };
 
@@ -136,6 +136,20 @@ export const createPromotion = async (
   return sendRequest<Promotion>(buildUrl('promotions'), {
     method: 'POST',
     body: JSON.stringify(data),
+    headers: {
+      ...(init && init.headers),
+      'content-type': 'application/json',
+    },
+  });
+};
+
+export const deleteCompany = async (
+  id: string,
+  init?: RequestInit,
+) => {
+  return sendRequest<Company>(buildUrl('companies', id), {
+    ...init,
+    method: 'DELETE',
     headers: {
       ...(init && init.headers),
       'content-type': 'application/json',

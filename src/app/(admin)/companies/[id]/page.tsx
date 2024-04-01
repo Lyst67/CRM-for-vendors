@@ -40,7 +40,7 @@ export default async function Page({ params }: PageProps) {
           <CompanyInfo companyId={params.id} />
         </div>
         <div className="col-span-9">
-          <CompanyPromotions companyId={params.id} />
+          {company.hasPromotions && <CompanyPromotions companyId={params.id} />}
         </div>
       </div>
     </HydrationBoundary>
