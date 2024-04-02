@@ -15,6 +15,14 @@ const headers = [
   'Country',
   'Joined date',
 ];
+const colors = [
+  'text-[#fb923c] border-[#fb923c]',
+  'text-[#60A5FA] border-[#60A5FA]',
+  'text-[#fb7185] border-[#fb7185]',
+  'text-[#34D399] border-[#34D399]',
+  'text-[#C084FC] border-[#C084FC]',
+  'text-[#1D4ED8] border-[#1D4ED8]',
+];
 
 export default function CompanyTable({}: CompanyTableProps) {
   const { data } = useQuery({
@@ -29,7 +37,10 @@ export default function CompanyTable({}: CompanyTableProps) {
         <thead>
           <tr>
             {headers.map((header, i) => (
-              <th key={i} className="pb-5 text-sm font-light text-gray-900">
+              <th
+                key={i}
+                className="pb-5 w-1/6 text-sm text-start font-light text-gray-900"
+              >
                 {header}
               </th>
             ))}
@@ -37,7 +48,11 @@ export default function CompanyTable({}: CompanyTableProps) {
         </thead>
         <tbody>
           {data?.map((company) => (
-            <CompanyRow key={company.id} company={company} />
+            <CompanyRow
+              key={company.id}
+              color={colors[parseInt(company.id, 10) - 1]}
+              company={company}
+            />
           ))}
         </tbody>
       </table>

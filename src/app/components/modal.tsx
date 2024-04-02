@@ -2,6 +2,7 @@
 
 import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
+import Image from 'next/image';
 
 export interface ModalProps {
   children?: React.ReactNode;
@@ -28,7 +29,17 @@ export default function Modal({ show, children, onClose }: ModalProps) {
         >
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </Transition.Child>
-        <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all p-7 mx-auto sm:my-10 sm:w-full sm:max-w-2xl">
+        <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all  mx-auto sm:my-10 sm:w-full sm:max-w-2xl">
+          <div className="absolute ml-auto top-3 right-3">
+            <button type="button" onClick={onClose}>
+              <Image
+                width={24}
+                height={24}
+                src="/images/x-mark.svg"
+                alt="x-mark"
+              />
+            </button>
+          </div>
           {children}
         </Dialog.Panel>
       </Dialog>

@@ -13,6 +13,7 @@ import Button from '@/app/components/button';
 import InputField from '@/app/components/input-field';
 import LogoUploader from '@/app/components/logo-uploader';
 import StatusLabel from '@/app/components/status-label';
+import Image from 'next/image';
 
 export type CompanyFieldValues = {
   title: string;
@@ -79,11 +80,11 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-      <Form className="flex flex-col gap-10">
-        <p className="mb-0.5 text-xl">Add new company</p>
-        <div className="flex gap-6">
-          <div className="flex flex-col flex-1 gap-5">
-            <LogoUploader placeholder="Upload photo" />
+      <Form className="flex flex-col p-7">
+        <div className="flex gap-6 mb-7">
+          <div className="flex flex-col flex-1 gap-4">
+            <p className="mb-10 text-xl font-semibold">Add new company</p>
+            <LogoUploader label="Logo" placeholder="Upload photo" />
             <InputField
               label="Brend logo"
               placeholder="Logo URL"
@@ -104,21 +105,8 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
                 )
               )}
             </InputField>
-            <InputField
-              required
-              label="Country"
-              placeholder="Country"
-              name="countryId"
-              as="select"
-            >
-              {countries?.map((country) => (
-                <option key={country.id} value={country.id}>
-                  {country.title}
-                </option>
-              ))}
-            </InputField>
           </div>
-          <div className="flex flex-col flex-1 gap-5">
+          <div className="flex flex-col flex-1 gap-4">
             <InputField required label="Name" placeholder="Name" name="title" />
             <InputField
               required
@@ -130,6 +118,19 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
               {categories?.map((category) => (
                 <option key={category.id} value={category.id}>
                   {category.title}
+                </option>
+              ))}
+            </InputField>
+            <InputField
+              required
+              label="Country"
+              placeholder="Country"
+              name="countryId"
+              as="select"
+            >
+              {countries?.map((country) => (
+                <option key={country.id} value={country.id}>
+                  {country.title}
                 </option>
               ))}
             </InputField>
