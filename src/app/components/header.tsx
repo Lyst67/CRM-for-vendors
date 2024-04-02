@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import profilePic from '../../../public/images/My photo-small.png';
+import profilePic from '../../../public/images/My_crop.webp';
 
 export default function Header({ children }: { children: React.ReactNode }) {
   return (
