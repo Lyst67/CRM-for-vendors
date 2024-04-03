@@ -1,4 +1,5 @@
-додаток, спрямований на оптимізацію управління інформацією про постачальників
+An example of the application "CRM for vendors" created by the developer Pavlo Lystopad, aimed at optimizing the management of information about suppliers.
+Technologies used: Next.js, React, Typescript, Tailwind CSS, React-query, Formik.
 
 ## Getting Started
 
