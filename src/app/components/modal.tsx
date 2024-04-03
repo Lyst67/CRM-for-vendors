@@ -31,7 +31,11 @@ export default function Modal({ show, children, onClose }: ModalProps) {
         </Transition.Child>
         <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all  mx-auto sm:my-10 sm:w-full sm:max-w-2xl">
           <div className="absolute ml-auto top-3 right-3">
-            <button type="button" onClick={onClose}>
+            <button
+              type="button"
+              onClick={onClose}
+              className="hover:scale-110 duration-300"
+            >
               <Image
                 width={24}
                 height={24}

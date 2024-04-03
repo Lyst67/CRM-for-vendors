@@ -15,6 +15,7 @@ module.exports = {
         'second-child': "url('/images/mesh-gradient-2.svg')",
         'third-child': "url('/images/mesh-gradient-3.svg')",
         'fourth-child': "url('/images/mesh-gradient-4.svg')",
+        'crm-bg': 'url(/images/background/crm.webp)',
       },
     },
   },

@@ -6,12 +6,15 @@ import { useQuery } from '@tanstack/react-query';
 import { deleteCompany, getCompany } from '@/lib/api';
 import StatusLabel from '@/app/components/status-label';
 import Button from './button';
+import { useRouter } from 'next/navigation';
 
 export interface CompanyInfoProps {
   companyId: string;
 }
 
 export default function CompanyInfo({ companyId }: CompanyInfoProps) {
+  const router = useRouter();
+
   const { data: company } = useQuery({
     queryKey: ['companies', companyId],
     queryFn: () => getCompany(companyId),
@@ -56,8 +59,16 @@ export default function CompanyInfo({ companyId }: CompanyInfoProps) {
           joinedDate
         ).toLocaleDateString('uk')}`}</p>
         <div className="w-full h-px my-8 bg-gray-300" />
-        <p>{description}</p>
-        <Button onClick={() => deleteCompany(id)}>Delete Company</Button>
+        <p className="mb-3">{description}</p>
+        <Button
+          onClick={async () => {
+            await deleteCompany(id);
+            alert('Company has been deleted');
+            router.push(`/companies`);
+          }}
+        >
+          Delete Company
+        </Button>
       </div>
     </div>
   );

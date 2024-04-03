@@ -13,7 +13,7 @@ export default function Sidebar({}: SidebarProps) {
   };
 
   return (
-    <aside className="fixed top-0 left-0 w-60 h-screen">
+    <aside className="fixed top-0 left-0 bottom-0 w-60 h-screen">
       <div className="flex flex-col justify-between h-full overflow-y-auto bg-[#111827] text-[#FAFAFA]">
         <div>
           <Image

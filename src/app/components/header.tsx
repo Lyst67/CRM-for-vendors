@@ -12,8 +12,10 @@ export default function Header({ children }: { children: React.ReactNode }) {
           <div className="flex  justify-center items-center w-11 h-11 rounded-full overflow-hidden">
             <Image
               src={profilePic}
-              width={44}
-              height={44}
+              width="0"
+              height="0"
+              sizes="100vw"
+              className="w-11 h-auto"
               alt="Pavlo Lystopad"
             />
           </div>
