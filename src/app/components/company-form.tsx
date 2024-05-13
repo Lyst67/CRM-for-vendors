@@ -13,7 +13,7 @@ import Button from '@/app/components/button';
 import InputField from '@/app/components/input-field';
 import LogoUploader from '@/app/components/logo-uploader';
 import StatusLabel from '@/app/components/status-label';
-import Image from 'next/image';
+
 
 export type CompanyFieldValues = {
   title: string;

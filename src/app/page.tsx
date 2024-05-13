@@ -1,9 +1,10 @@
 import Button from '@/app/components/button';
 import Link from 'next/link';
 import Image from 'next/image';
+
 export default function Page() {
   return (
-    <main>
+    <>
       <header className="flex items-center h-20 bg-[#111827]">
         <Image
           className="mx-auto"
@@ -24,6 +25,6 @@ export default function Page() {
           <Button>Dashboard</Button>
         </Link>
       </section>
-    </main>
+    </>
   );
 }
