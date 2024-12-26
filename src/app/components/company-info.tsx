@@ -37,7 +37,7 @@ export default function CompanyInfo({ companyId }: CompanyInfoProps) {
     <div className="flex flex-col gap-5">
       <div className="flex flex-col items-center p-7 gap-5 bg-gray-900 rounded">
         <div className="flex justify-center items-center w-28 h-28 rounded-full bg-blue-500">
-          {avatar && (
+          {avatar && !company.avatar?.includes('Lara') && (
             <Image
               width="0"
               height="0"
