@@ -65,7 +65,7 @@ const sendRequest = async <T>(url: string, init?: RequestInit) => {
   if (!res.ok) {
     throw new Error(await res.text());
   }
-  
+
   return (await res.json()) as T;
 };
 
@@ -106,17 +106,17 @@ export const getCompany = (id: string, init?: RequestInit) => {
 
 export const getPromotions = async (
   params: Record<string, string> = {},
-  init?: RequestInit,
+  init?: RequestInit
 ) => {
   return sendRequest<Promotion[]>(
     `${buildUrl('promotions')}?${stringifyQueryParams(params)}`,
-    init,
+    init
   );
 };
 
 export const createCompany = async (
   data: Omit<Company, 'id' | 'hasPromotions'>,
-  init?: RequestInit,
+  init?: RequestInit
 ) => {
   return sendRequest<Company>(buildUrl('companies'), {
     ...init,
@@ -131,7 +131,7 @@ export const createCompany = async (
 
 export const createPromotion = async (
   data: Omit<Promotion, 'id'>,
-  init?: RequestInit,
+  init?: RequestInit
 ) => {
   return sendRequest<Promotion>(buildUrl('promotions'), {
     method: 'POST',
@@ -143,10 +143,7 @@ export const createPromotion = async (
   });
 };
 
-export const deleteCompany = async (
-  id: string,
-  init?: RequestInit,
-) => {
+export const deleteCompany = async (id: string, init?: RequestInit) => {
   return sendRequest<Company>(buildUrl('companies', id), {
     ...init,
     method: 'DELETE',

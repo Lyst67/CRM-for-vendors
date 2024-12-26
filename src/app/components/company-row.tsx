@@ -13,7 +13,7 @@ export interface CompanyRowProps {
 export default function CompanyRow({ company, color }: CompanyRowProps) {
   return (
     <>
-      {company.avatar && (
+      {company.title && (
         <tr className="h-14 text-left text-gray-900 bg-white">
           <td
             className={`pl-3 text-xs font-medium  rounded-l border-l-4 text-blue-700 border-blue-700 ${color}`}
@@ -23,7 +23,7 @@ export default function CompanyRow({ company, color }: CompanyRowProps) {
           <td className="w-2/6">
             <div className="flex gap-4 items-center">
               <div className="flex  justify-center items-center w-8 h-8 rounded-full bg-blue-500">
-                {company.avatar && (
+                {company.avatar && !company.avatar?.includes('Lara') && (
                   <Image
                     width="0"
                     height="0"
